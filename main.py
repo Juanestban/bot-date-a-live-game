@@ -22,14 +22,13 @@ def runCommad(cmd):
         handler_Exit()
 
 
-while True:
-    cmd = input("$/~ ")
-    runCommad(cmd)
+### coords [x, y]
+coords = ["86", "240"]
 
-    client = Client(host="127.0.0.1", port=5037)
-    devices = client.devices()
-    device = devices[0]
+### Client ADB Device
+client = Client(host="127.0.0.1", port=5037)
+devices = client.devices()
+device = devices[0]
 
-    device.shell("input touchscreen swipe [coords 0 0 1]")
-
-    print("hello world")
+### Exce command
+device.shell("input touchscreen tap {x} {y}".format(x=coords[0], y=coords[1]))
